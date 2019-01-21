@@ -30,7 +30,10 @@
 		<script src="digiid.js"></script>
 <script>
 	var digiID=new DigiID("thumb dune off");	//randomly generated super insecure seed.  Don't use for real
-	var keyPair=digiID.getKeyPair("digiid://yourdomain.com/callback.php?x=test");
-	console.log('Private Key: ',keyPair.toWIF());
-	console.log('Public Address:',keyPair.getAddress());
+	digiID.setURI("digiid://yourdomain.com/callback.php?x=test");
+	console.log('Callback URL:',digiID.getCallbackURL());
+	console.log('Private Key: ',digiID.getPrivate());
+	console.log('Public Address:',digiID.getAddress());
+	//Not yet tested      console.log('Signature',digiID.getSignature());
+	
 </script>
