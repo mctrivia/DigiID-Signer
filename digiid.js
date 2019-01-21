@@ -81,15 +81,10 @@
 			return this.keys.getAddress();
 		},
 		"getSignature":function() {
-			/*
-			
-				Untested
-			
-			*/
 			var me=this;
 			me._safe();
 			var hash=bitcoinjs.bitcoin.crypto.hash256(me.network.messagePrefix+magicLength(me.uri)+me.uri);
-			return me.keys.sign(hash);
+			return me.keys.sign(hash).toCompact();
 		}
 		
 	}
