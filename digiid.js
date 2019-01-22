@@ -80,11 +80,12 @@
 			this._safe();
 			return this.keys.getAddress();
 		},
-		"getSignature":function() {
+		"getSignature":function(base64) {	//if base64 true then will return base 64 encoded.  otherwise returns Uint8Array
 			var me=this;
 			me._safe();
 			var hash=bitcoinjs.bitcoin.crypto.hash256(me.network.messagePrefix+magicLength(me.uri)+me.uri);
-			return me.keys.sign(hash).toCompact();
+			var signature=me.keys.sign(hash).toCompact();
+			return base64?btoa(String.fromCharCode.apply(null, signature)):signature;
 		}
 		
 	}
