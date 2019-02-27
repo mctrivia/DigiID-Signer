@@ -83,7 +83,7 @@
 		"getSignature":function(base64) {	//if base64 true then will return base 64 encoded.  otherwise returns Uint8Array
 			var me=this;
 			me._safe();
-			var hash=bitcoinjs.bitcoin.crypto.hash256(me.network.messagePrefix+magicLength(me.uri)+me.uri);
+			var hash=bitcoinjs.bitcoin.crypto.hash256(me.network.messagePrefix+magicLength(me.url)+me.url);
 			var signature=me.keys.sign(hash).toCompact();
 			return base64?btoa(String.fromCharCode.apply(null, signature)):signature;
 		}
