@@ -9285,7 +9285,6 @@ ECPair.prototype.getPublicKeyBuffer = function () {
 
 ECPair.prototype.sign = function (hash) {
   if (!this.d) throw new Error('Missing private key')
-
   return ecdsa.sign(hash, this.d)
 }
 
@@ -9561,6 +9560,7 @@ HDNode.prototype.neutered = function () {
 }
 
 HDNode.prototype.sign = function (hash) {
+	console.log('*');
   return this.keyPair.sign(hash)
 }
 
